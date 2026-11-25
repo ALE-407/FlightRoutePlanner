@@ -161,36 +161,37 @@ def main():
         print("======================")
         print("Flight Route Planner")
         print("======================")
-        print("1. Display Available Airports")
-        print("2. Find Shortest Route")
-        print("3. Identify Airport Hubs")
-        print("4. Find Unreachable Airports")
-        print("5. Display Visual Flight Graph")
+        print("1. Display Visual Flight Graph")
+        print("2. Display Available Airports")
+        print("3. Find Shortest Route")
+        print("4. Identify Airport Hubs")
+        print("5. Find Unreachable Airports")
         print("6. Exit")
         
         choice = int(input("Enter your choice: "))
 
         if (choice == 1):
+            display_visual_flight_paths(flight_graph)
+            print("")
+        elif (choice == 2):
             display_flight_paths(flights)
             print("")
 
-        elif (choice == 2):
+        elif (choice == 3):
             starting_choice = input("Enter the outgoing airport: ")
             destination_choice = input("Enter the destination airport: ")
             dijkstra(starting_choice, destination_choice)
             print("")
 
-        elif (choice == 3):
+        elif (choice == 4):
             identify_hubs()
             print("")
 
-        elif (choice == 4):
+        elif (choice == 5):
             unreachable_choice = input("Enter the airport code to find unreachable airports: ")
             find_unreachable(flight_graph, unreachable_choice)
             print("")
 
-        elif (choice == 5):
-            display_visual_flight_paths(flight_graph)
         elif (choice == 6):
             break
         else:
