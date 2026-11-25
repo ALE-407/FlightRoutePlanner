@@ -195,7 +195,7 @@ def main():
         elif (choice == 6):
             break
         else:
-            print("Invalid Option")
+            print("Invalid Option\n")
 
 
 main()
