@@ -153,8 +153,8 @@ def find_unreachable(graph, source):
     else:
         print(f"Unreachable airports from {source}: {unreachable}")
 
+'''Displays the user interface where user is given the option to choose an action'''
 def main():
-
 
     while True:
 
@@ -168,7 +168,11 @@ def main():
         print("5. Find Unreachable Airports")
         print("6. Exit")
         
-        choice = int(input("Enter your choice: "))
+        try:
+            choice = int(input("Enter your choice: "))
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 6.")
+            continue
 
         if (choice == 1):
             display_visual_flight_paths(flight_graph)
