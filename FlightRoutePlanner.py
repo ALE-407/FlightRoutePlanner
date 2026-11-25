@@ -33,7 +33,7 @@ for airport in flights:
 '''Displays the visual representation of the flight graph'''
 def display_visual_flight_paths(flight_graph):
     node_positions = nx.spring_layout(flight_graph)
-    nx.draw(flights, pos = node_positions, edge_color = "blue", width = 1, with_labels = True, arrows = True)
+    nx.draw(flight_graph, pos = node_positions, edge_color = "blue", width = 1, with_labels = True, arrows = True)
     plt.show()
 
 '''Displays all the available flights from each airport and the distance to travel'''
