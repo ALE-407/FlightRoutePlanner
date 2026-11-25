@@ -1,12 +1,13 @@
 import networkx as nx
+import matplotlib.pyplot as plt
 
 flights = {
-    "MCI": {"DFW": 460, "DEN": 533, "ORD": 403, "ATL": 692, "BWI": 630},
-    "DFW": {"ORD": 802, "ATL": 731, "LAX": 1235, "IAH": 224 },
+    "MCI": {"DFW": 460, "DEN": 533, "ORD": 403, "ATL": 692, "BWI": 963},
+    "DFW": {"ORD": 802, "ATL": 731, "LAX": 1232, "IAH": 224 },
     "DEN": {"MCI": 533, "LAX": 862, "ORD": 888, "SLC": 391},
     "ORD": {"DFW": 802, "JFK": 740, "ATL": 606, "BOS": 867},
     "ATL": {"MCI": 692, "ORD": 606, "MIA": 594, "CLT": 226},
-    "LAX": {"DEN": 862, "JFK": 2775, "SFO": 337, "SEA": 954},
+    "LAX": {"DEN": 862, "JFK": 2470, "SFO": 337, "SEA": 954},
     "JFK": {"ATL": 760, "ORD": 740, "BOS": 187, "MIA": 1090},
     "SEA": {"LAX": 954, "SFO": 679, "DEN": 1024, "PDX": 129},
     "SFO": {"LAX": 337, "SEA": 679, "DEN": 967, "PHX": 651},
@@ -28,6 +29,12 @@ flight_graph = nx.DiGraph()
 for airport in flights:
     for destination, distance in flights[airport].items():
         flight_graph.add_edge(airport, destination, weight = distance)
+
+'''Displays the visual representation of the flight graph'''
+def display_visual_flight_paths(flight_graph):
+    node_positions = nx.spring_layout(flight_graph)
+    nx.draw(flights, pos = node_positions, edge_color = "blue", width = 1, with_labels = True, arrows = True)
+    plt.show()
 
 '''Displays all the available flights from each airport and the distance to travel'''
 def display_flight_paths(flights):
@@ -158,7 +165,8 @@ def main():
         print("2. Find Shortest Route")
         print("3. Identify Airport Hubs")
         print("4. Find Unreachable Airports")
-        print("5. Exit")
+        print("5. Display Visual Flight Graph")
+        print("6. Exit")
         
         choice = int(input("Enter your choice: "))
 
@@ -182,9 +190,12 @@ def main():
             print("")
 
         elif (choice == 5):
+            display_visual_flight_paths(flight_graph)
+        elif (choice == 6):
             break
         else:
             print("Invalid Option")
+
 
 main()
 
